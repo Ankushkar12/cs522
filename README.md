@@ -94,16 +94,17 @@ org.junit.Assert.assertTrue
 
 
 And the org.junit.Assert.assertThat method (available in JUnit4) which uses matchers and is better than old style assertions because it provides:
-Better readability
-assertThat(actual, is(equalTo(expected))); is better than assertEquals(expected, actual);
-assertThat(actual, is(not(equalTo(expected)))); is better than assertFalse(expected.equals(actual));
-Better failiure messages
-java.lang.AssertionError: Expected: is "hello" but: was "hello world" is better than
 
-org.junit.ComparisonFailure: expected:<hello[]> but was:<hello[ world]>
+1.Better readability
+   a.assertThat(actual, is(equalTo(expected))); is better than assertEquals(expected, actual);
+   b.assertThat(actual, is(not(equalTo(expected)))); is better than assertFalse(expected.equals(actual));
+2.Better failiure messages
+   a.java.lang.AssertionError: Expected: is "hello" but: was "hello world" is better than
 
-Flexbility
-Multiple conditions could be asserted using matchers like anyOf or allOf.
+     org.junit.ComparisonFailure: expected:<hello[]> but was:<hello[ world]>
+
+3.Flexbility
+    a.Multiple conditions could be asserted using matchers like anyOf or allOf.
 
 eg: assertThat("hello world", anyOf(is("hello world"), containsString("hello"))); In this case, the test will pass if either the actual string is “hello world” or if it contains the word “hello”.
 
