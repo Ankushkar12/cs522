@@ -1,0 +1,163 @@
+/** import statements*/
+
+/**
+* @author Ankush Kar <ankushkar1997@gmail.com>
+*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+* Juke Box Contains the core functionality of the program.
+*/
+public class Jukebox {
+
+//list of variables
+Database db;
+int creditCard;
+/**
+* Constructor
+*/
+public Jukebox(){
+  
+}
+/**
+*Parametrized Constructor, used to assign values to the variables
+*@param db, creditCard: database object and a integer value
+*/
+public Jukebox(Database db, int creditCard) {
+   //invoked the constructor, via constructor chaining
+super();
+  
+   //assign values to variables of this class
+this.db = db;
+this.creditCard = creditCard;
+}   
+
+/**
+* Method to return db variable
+*@return db: Database object
+*/
+public Database getDb() {
+return db;
+}
+
+/**
+* Method to set Database
+*@param db: Database Object
+*/
+public void setDb(Database db) {
+this.db = db;
+}
+
+/**
+* Method to get creditCard values
+* @return creditCard: integer value of creditCard variable
+*/
+public int getCreditCard() {
+return creditCard;
+}
+
+/**
+* Method to set creditCard value
+* @param creditCard: takes an integer value
+*/
+public void setCreditCard(int creditCard) {
+this.creditCard = creditCard;
+}
+
+/**
+* This method checks for the validity of creditCard
+* @return boolean on the basis of the condition
+*/
+public boolean isValidCreditCard(){
+   //if card values is greater than 0, then it is valid
+if(creditCard>0)
+return true;
+else
+return false;
+}
+
+
+/**
+* Method to play song, on the basis of index
+* @param i: index value
+*/
+void play(int i) {
+   //create object of Song and get list of songs
+Song song=db.getSongList(i);
+         
+   //call method play
+song.play();
+}
+
+/**
+* Overloaded method, to play all the songs available in the list
+*/
+void play() {
+     
+   //iterate in SongList and play all of them
+for (int index=0;index<db.getSongList().size();index++)
+{
+Song song=db.getSongList(index);
+trace("Currently Playing :"+song.getName());
+song.play();
+}
+}
+
+/**
+* @param s: string s
+*/
+private void trace(String s){
+System.out.println(s);
+}
+
+
+/**
+* Driver method
+* @param args: String array of values to be received from terminal
+*/
+public static void main(String[] args){
+   //create an object and initialize its variables using constructor
+Song song1=new Song("Kadhal Cricket", "Kharesma Ravichandran",
+"Thani Oruvan", "Cricket.mp3", "Mp3", 214);
+          
+       //create second object
+Song song2=new Song("Kannala Kannala", "Kaushik Krish",
+"Thani Oruvan", "Kannala.mp3", "Mp3", 215);
+      
+       //create third object
+Song song3=new Song("Kadhal Cricket", "Kharesma Ravichandran",
+"Thani Oruvan", "D://Cricket.mp3", "Mp3", 214);
+          
+       //create a list of Songs type
+List<Song> tempSongList= new ArrayList<Song>();
+  
+   //add objects of Songs to the list
+tempSongList.add(song1);
+tempSongList.add(song2);
+tempSongList.add(song3);
+  
+   //create database object
+Database tempDB= new Database(tempSongList);
+  
+   //create jukebox object
+Jukebox j= new Jukebox(tempDB, -123);
+  
+//Validation of Credit Card
+System.out.println("Validity of CC : "+j.isValidCreditCard());
+j.getDb().toString();
+      
+System.out.println("\nDeleting Song @ index 2");
+//Deleting Song @ index 2
+j.getDb().removeSong(2);
+j.getDb().toString();
+  
+System.out.println("Playing the SongList");
+j.play();
+  
+   //play song on the basis of index
+System.out.println("Playing Song @ index 2");
+j.play(2);
+}   
+}
