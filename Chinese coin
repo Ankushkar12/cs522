@@ -1,0 +1,88 @@
+Coin.java
+
+public class Coin {
+  private double radius;
+   Hole h1 = new Hole(12);
+  private int side;
+  public Coin(double radius, int side) {
+    this.radius = radius;
+     this.side = side;
+      }
+  public double pi() {
+  return 3.1416;
+    }
+  public double getRadius() {
+  return radius;
+    }
+  public void setRadius(double radius) {
+    this.radius = radius;
+  }
+  public int getSide() {
+    return side;
+  }
+  public void setSide(int side) {
+    this.side = side;
+  }
+  public double area() {
+    double area = (pi() * radius * radius) - h1.area();
+    return area;
+  }
+  public boolean isNormal() {
+  if(radius > side)
+  return true;
+  else
+  return false;
+    }
+}
+
+
+
+  Hole.java
+  
+  
+  
+public class Hole {
+private int side;
+  public Hole(int side) {
+    this.side = side;
+  }
+  public int getSide() {
+    return side;
+  }
+  public void setSide(int side) {
+    this.side = side;
+  }
+  public int squre(int side) {
+    return side*side;
+  }
+  public int area() {
+    return squre(side);
+  }
+   public int Circumference() {
+    return 4 * side;
+  }
+  public boolean isLarge() {
+    if(side > 10 )
+      return true;
+    else
+      return false;
+    }
+}
+
+
+
+ImplChineseCoin.java
+
+
+
+public class ImplChineseCoin {
+  public static void main (String args[]) {
+    Coin c1 = new Coin(23.4, 12);
+    c1.area();
+    c1.h1.area();
+    System.out.println(c1.area());
+    System.out.println(c1.h1.area());
+    System.out.println(c1.h1.isLarge());
+    System.out.println(c1.isNormal());
+  }
+}
