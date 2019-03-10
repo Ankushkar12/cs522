@@ -1,0 +1,20 @@
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+public class Testlogic {
+public void   testEquals(){
+       final int value = 25;
+   final float value1 = 80000;
+
+   Nurse mary = new Nurse(value,value1);   
+   assertEquals(4,Nurse(value,value1);
+   assertEquals(-1,Nurse(value,value1);
+   }
+   public void isBusy(){
+   assertEquals(4,Nurse.isBusy());
+   assertEquals(-1,Nurse.isBusy());
+   }
+   public void retire(){
+   assertEquals(4,Nurse.retire());
+   assertEquals(-1,Nurse.retire());
+   }
+}
